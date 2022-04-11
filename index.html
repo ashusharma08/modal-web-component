@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Components</title>
+    <script src="test.js"></script>
+</head>
+
+<body>
+    <my-modal>
+        <h1 slot="title">My header from caller</h1>
+        <p slot="content">Dialog content passed from caller</p>
+    </my-modal>
+    <button onclick="openModal()">open modal</button>
+
+    <script>
+        const openButton = document.querySelector('button');
+        const modal = document.querySelector('my-modal');
+        openModal = () => {
+            if (!modal.isOpen) {
+                modal.open();
+                console.log('Opening...');
+            }
+        }
+
+        modal.addEventListener('close', () => {
+            console.log('closing');
+        });
+    </script>
+</body>
+
+</html>
